@@ -4,6 +4,7 @@ import { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { CiMenuFries } from "react-icons/ci";
 import { Link } from "react-router";
+import { ModeToggle } from "../mode-toggle";
 
 const Navbar = () => {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
@@ -53,6 +54,9 @@ const Navbar = () => {
           className="text-[1.8rem] mr-1 text-[#424242]c cursor-pointer md:hidden flex"
           onClick={() => setMobileSidebarOpen(!mobileSidebarOpen)}
         />
+        <div className="mr-2">
+            <ModeToggle/>
+        </div>
       </div>
 
       {/* mobile sidebar */}
