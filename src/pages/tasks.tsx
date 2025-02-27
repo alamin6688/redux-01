@@ -1,3 +1,4 @@
+import { AddTaskModal } from "@/components/module/tasks/addTaskModal";
 import TaskCard from "@/components/module/tasks/taskCard";
 import {
   selectFilter,
@@ -11,14 +12,15 @@ const Tasks = () => {
   console.log(tasks);
   console.log(filters);
   return (
-    <div className="w-full">
-      <h1 className="text-center mt-6 text-3xl">Tasks</h1>
+    <div className="w-full mx-auto">
+      <div className="flex justify-between items-center mt-6">
+        <h1 className="text-center text-3xl">Tasks</h1>
+        <AddTaskModal />
+      </div>
       <div className="space-y-5 mt-4">
-        {
-          tasks.map((task) => {
-            return <TaskCard task={task}/>;
-          })
-        }
+        {tasks.map((task) => {
+          return <TaskCard task={task} key={task.id} />;
+        })}
       </div>
     </div>
   );
