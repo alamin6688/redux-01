@@ -8,7 +8,16 @@ interface InitialState {
 }
 
 const initialState: InitialState = {
-  tasks: [],
+  tasks: [
+    {
+      id: nanoid(),
+      title: "Learn React",
+      description: "Learn React and build a todo app",
+      isCompleted: false,
+      duedate: "2025-01-14T18:00:00.000Z",
+      priority: "Medium",
+    },
+  ],
   filter: "all",
 };
 
