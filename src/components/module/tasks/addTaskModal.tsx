@@ -19,7 +19,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   Popover,
   PopoverContent,
@@ -28,9 +27,7 @@ import {
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -39,7 +36,6 @@ import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router";
 
 export function AddTaskModal() {
   const form = useForm();
@@ -165,10 +161,7 @@ export function AddTaskModal() {
                     </SelectContent>
                   </Select>
                   <FormDescription>
-                    You can manage task levels anytime {""}
-                    <Link href="/examples/forms" className="underline">
-                      Task settings
-                    </Link>
+                    You can manage task levels anytime.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
