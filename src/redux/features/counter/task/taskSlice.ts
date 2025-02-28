@@ -40,7 +40,7 @@ const taskSlice = createSlice({
       state.tasks.push(taskData);
     },
     toggleCompleteStatus: (state, action: PayloadAction<string>) => {
-      console.log(action);
+      // console.log(action);
       state.tasks.forEach((task) =>
         task.id === action.payload
           ? (task.isCompleted = !task.isCompleted)
@@ -48,20 +48,36 @@ const taskSlice = createSlice({
       );
     },
     deleteTask: (state, action: PayloadAction<string>) => {
-      console.log("delete task");
+      // console.log("delete task");
       state.tasks = state.tasks.filter((task) => task.id !== action.payload);
+    },
+    updateFilter: (
+      state,
+      action: PayloadAction<"all" | "low" | "medium" | "high">
+    ) => {
+      state.filter = action.payload;
     },
   },
 });
 
 export const selectTasks = (state: RootState) => {
-  return state.todo.tasks;
+  const filter = state.todo.filter;
+  if (filter === "low") {
+    return state.todo.tasks.filter((task) => task.priority === "low");
+  } else if (filter === "medium") {
+    return state.todo.tasks.filter((task) => task.priority === "medium");
+  } else if (filter === "high") {
+    return state.todo.tasks.filter((task) => task.priority === "high");
+  } else {
+    return state.todo.tasks;
+  }
 };
 
 export const selectFilter = (state: RootState) => {
   return state.todo.filter;
 };
 
-export const { addTask, toggleCompleteStatus, deleteTask } = taskSlice.actions;
+export const { addTask, toggleCompleteStatus, deleteTask, updateFilter } =
+  taskSlice.actions;
 
 export default taskSlice.reducer;
