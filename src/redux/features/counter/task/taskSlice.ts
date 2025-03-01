@@ -16,6 +16,7 @@ const initialState: InitialState = {
       isCompleted: false,
       duedate: "2025-01-14T18:00:00.000Z",
       priority: "medium",
+      assignedTo: " ",
     },
   ],
   filter: "all",
@@ -27,6 +28,7 @@ const createTask = (taskData: DraftTask): ITask => {
   return {
     id: nanoid(),
     isCompleted: false,
+    assignedTo: " ",
     ...taskData,
   };
 };
