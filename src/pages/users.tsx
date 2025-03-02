@@ -1,13 +1,17 @@
 import { AddUserModal } from "@/components/module/tasks/addUserModal";
 import { Button } from "@/components/ui/button";
 import { selectFilter } from "@/redux/features/counter/task/taskSlice";
-import { selectUsers } from "@/redux/features/counter/user/userSlice";
-import { useAppSelector } from "@/redux/hook";
+import {
+  removeUser,
+  selectUsers,
+} from "@/redux/features/counter/user/userSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { AiFillDelete } from "react-icons/ai";
 
 const Users = () => {
   const users = useAppSelector(selectUsers);
   const filters = useAppSelector(selectFilter);
+  const dispatch = useAppDispatch();
 
   console.log(users);
   console.log(filters);
@@ -25,7 +29,11 @@ const Users = () => {
             className="flex justify-between gap-10 items-center border border-green-200 p-8 rounded-lg"
           >
             <h2>{user.name}</h2>
-            <Button variant="link" className="p-0 text-red-500">
+            <Button
+              onClick={() => dispatch(removeUser(user.id))}
+              variant="link"
+              className="p-0 text-red-500"
+            >
               <AiFillDelete />
             </Button>
           </div>
