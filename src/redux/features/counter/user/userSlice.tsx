@@ -12,6 +12,10 @@ const initialState: InitialState = {
       id: "PmR_HQo4hq",
       name: "John Doe",
     },
+    {
+      id: "Hurt_HQo4hq",
+      name: "Mezba",
+    },
   ],
 };
 

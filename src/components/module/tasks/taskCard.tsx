@@ -5,7 +5,8 @@ import {
   deleteTask,
   toggleCompleteStatus,
 } from "@/redux/features/counter/task/taskSlice";
-import { useAppDispatch } from "@/redux/hook";
+import { selectUsers } from "@/redux/features/counter/user/userSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { ITask } from "@/types";
 import { AiFillDelete } from "react-icons/ai";
 
@@ -15,6 +16,9 @@ interface IProps {
 
 const TaskCard = ({ task }: IProps) => {
   const dispatch = useAppDispatch();
+  const users = useAppSelector(selectUsers);
+
+  const assignedUser = users.find((user) => user.id === task.assignedTo);
 
   return (
     <div className="border mt-8 px-5 py-3 rounded-md">
@@ -46,6 +50,7 @@ const TaskCard = ({ task }: IProps) => {
         </div>
       </div>
       <div>
+        <p>Assigned To -{assignedUser ? assignedUser.name : "No one"}</p>
         <p className="text-gray-500">{task.description}</p>
       </div>
     </div>
